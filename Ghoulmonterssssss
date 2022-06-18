@@ -1,0 +1,182 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Sleep Hub(BETA)", "DarkTheme")
+local Tab = Window:NewTab("Farm Player")
+local Section = Tab:NewSection("Select Player!")
+Plr = {}
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+    table.insert(Plr,v.Name) 
+end
+local drop = Section:NewDropdown("Select Player!", "Click To Select/เลือกเพลเยอ", Plr, function(t)
+   PlayerTP = t
+end)
+Section:NewButton("Click To TP", "", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame
+end)
+Section:NewToggle("Auto Tp", "", function(t)
+_G.TPPlayer = t
+while _G.TPPlayer do wait()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame
+end
+end)
+
+Section:NewButton("Refresh Dropdown","Refresh Dropdown/รีเพลเยอ", function()
+  drop:Refresh(Plr)
+end)
+
+
+local Tab = Window:NewTab("AutoFarm")
+
+local Section = Tab:NewSection("BossFarm")
+ 
+MONS = {}
+ 
+for i,v in pairs(game:GetService("Workspace").EtoSpawns.Boss:GetChildren()) do
+    table.insert(MONS,v.Name)
+end
+ 
+Section:NewToggle("Auto-Farm", "", function(state)
+    _G.AutoFarm = state
+    while _G.AutoFarm do wait()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").EtoSpawns.Boss[Select].HumanoidRootPart.CFrame * CFrame.new(0,0,5)
+end
+end)
+ 
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+ 
+Section:NewButton("Refresh", "", function()
+    table.clear(MONS)
+for i,v in pairs(game:GetService("Workspace").Monster.Mon:GetChildren()) do
+    table.insert(MONS,v.Name)
+end
+end)
+
+MONS = {}
+ 
+for i,v in pairs(game:GetService("Workspace").KuzenSpawns.Boss:GetChildren()) do
+    table.insert(MONS,v.Name)
+end
+ 
+Section:NewToggle("Auto-Farm", "", function(state)
+    _G.AutoFarm = state
+    while _G.AutoFarm do wait()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").KuzenSpawns.Boss[Select].HumanoidRootPart.CFrame * CFrame.new(0,0,5)
+end
+end)
+ 
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+ 
+Section:NewButton("Refresh", "", function()
+    table.clear(MONS)
+for i,v in pairs(game:GetService("Workspace").Monster.Mon:GetChildren()) do
+    table.insert(MONS,v.Name)
+end
+end)
+
+MONS = {}
+ 
+for i,v in pairs(game:GetService("Workspace").YakumoSpawns.Boss:GetChildren()) do
+    table.insert(MONS,v.Name)
+end
+ 
+Section:NewToggle("Auto-Farm", "", function(state)
+    _G.AutoFarm = state
+    while _G.AutoFarm do wait()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").YakumoSpawns.Boss[Select].HumanoidRootPart.CFrame * CFrame.new(0,0,5)
+end
+end)
+ 
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+ 
+Section:NewButton("Refresh", "", function()
+    table.clear(MONS)
+for i,v in pairs(game:GetService("Workspace").Monster.Mon:GetChildren()) do
+    table.insert(MONS,v.Name)
+end
+end)
+
+local Section = Tab:NewSection("Auto Farm REP")
+Section:NewToggle("Autofarm", "not off.-./เปิดแล้วปิดไม่ได้นะครับ", function(state)	
+	while wait() do
+			wait(2)
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(573.6632080078125, 13.220257759094238, 624.46044921875)
+	wait(3)
+	game:GetService("ReplicatedStorage").Remotes.Yoshimura.Task:InvokeServer()
+	wait(3)
+	game:GetService("ReplicatedStorage").Remotes.Yoshimura.Task:InvokeServer()
+	wait(3)
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(856.606812, -1.76233017, 334.114471, 0.137957454, 0, 0.990438163, 0, 1, 0, -0.990438163, 0, 0.137957454)
+	wait(3)
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(934.279907, -1.76232982, 404.099915, 0.137957454, 0, 0.990438163, 0, 1, 0, -0.990438163, 0, 0.137957454)
+	wait(3)
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(898.919983, -1.76233017, 185.018448, -0.990438223, 0, 0.137956887, 0, 1, 0, -0.137956887, 0, -0.990438223)
+	wait(3)
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(706.713928, -1.76233017, 566.008667, 0.990438223, 0, -0.137956887, 0, 1, 0, 0.137956887, 0, 0.990438223)
+	wait(3)
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(655.414368, -2.16232944, 1041.89111, -0.573598981, -5.36954268e-08, -0.819136262, -6.96061093e-08, 1, -1.68096985e-08, 0.819136262, 4.73748614e-08, -0.573598981)
+	wait(5)
+	
+	end
+end)
+local Section = Tab:NewSection("Auto")
+Section:NewToggle("AutoCashout", "ได้เงินรายชั้วโมงออโต้", function(state)
+    while wait() do
+
+	local args = {
+	    [1] = "Secured1",
+	    [2] = game:GetService("Players").LocalPlayer.StorageFile
+	}
+
+	game:GetService("ReplicatedStorage").Remotes.ReppCashhout:InvokeServer(unpack(args))
+
+	end
+end)
+
+
+local Tab = Window:NewTab("Teleport")
+local Section = Tab:NewSection("Teleport to")
+Section:NewButton("CAFE", "tp to cafe/วาปไปคาเฟ้", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(568.7182006835938, 13.220257759094238, 635.8504638671875)
+end)
+Section:NewButton("CCG SPAWN", "tp to ccgspawn/วาปไปจุดเกิดซีซีจี", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1639.8326416015625, -1.0049299001693726, 552.1905517578125)
+end)
+Section:NewButton("MASK SHOP", "tp to maskshop/วาปไปร้านขายหน้ากาก", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(885.1065673828125, -1.1014851331710815, 862.4032592773438)
+end)
+Section:NewButton("Lowrank Aogiri", "tp to lowrank/วาปไปจุดฟามโรแรงค์", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(783.9389038085938, -1.301818609237671, 386.2762756347656)
+end)
+Section:NewButton("Midrank Aogiri", "tp to midrank/วาปไปจุดฟามมิดแรงค์", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(750.3704833984375, 42.29850387573242, 1000.5744018554688)
+end)
+Section:NewButton("Hightrank Aogiri", "tp to hightrank/วาปไปจุดฟามไฮแรงค์", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(26.9385929107666, -0.9868481755256653, 432.3433837890625)
+end)
+Section:NewButton("Jason boss", "tp to jason/วาปไปหาเจซัน", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(747.981689453125, -1.1014846563339233, 1370.138671875)
+end)
+Section:NewButton("Kuzen boss", "tp to Kuzen/วาปไปหาคุเซน", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-792.68212890625, -1.327876329421997, 816.8823852539062)
+end)
+Section:NewButton("Eto boss", "TP to ETO/วาปไปหาเอโตะ", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1807.7275390625, 117.92704772949219, 1157.5250244140625)
+end)
+
+
+local Tab = Window:NewTab("MISC")
+local Section = Tab:NewSection("MISC")
+Section:NewKeybind("ToggleUI", "toggleUI/เปิดปิดยูไอ", Enum.KeyCode.RightControl, function()
+	Library:ToggleUI()
+end)
+local Section = Tab:NewSection("Discord")
+
+
+
+
+
