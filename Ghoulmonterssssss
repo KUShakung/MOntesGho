@@ -26,7 +26,7 @@ end)
 
 local Tab = Window:NewTab("AutoFarm")
 
-local Section = Tab:NewSection("BossFarm")
+local Section = Tab:NewSection("EtoFarm")
  
 MONS = {}
  
@@ -34,8 +34,8 @@ for i,v in pairs(game:GetService("Workspace").EtoSpawns.Boss:GetChildren()) do
     table.insert(MONS,v.Name)
 end
  
-Section:NewToggle("Auto-Farm", "", function(state)
-    _G.AutoFarm = state
+Section:NewToggle("EtoFarm", "", function(EtoFarm)
+    _G.AutoFarm = EtoFarm
     while _G.AutoFarm do wait()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").EtoSpawns.Boss[Select].HumanoidRootPart.CFrame * CFrame.new(0,0,5)
 end
@@ -47,10 +47,12 @@ end)
  
 Section:NewButton("Refresh", "", function()
     table.clear(MONS)
-for i,v in pairs(game:GetService("Workspace").Monster.Mon:GetChildren()) do
+for i,v in pairs(game:GetService("Workspace").EtoSpawns.Boss:GetChildren()) do
     table.insert(MONS,v.Name)
 end
 end)
+
+local Section = Tab:NewSection("KuzenFarm")
 
 MONS = {}
  
@@ -71,10 +73,12 @@ end)
  
 Section:NewButton("Refresh", "", function()
     table.clear(MONS)
-for i,v in pairs(game:GetService("Workspace").Monster.Mon:GetChildren()) do
+for i,v in pairs(game:GetService("Workspace").KuzenSpawns.Boss:GetChildren()) do
     table.insert(MONS,v.Name)
 end
 end)
+
+local Section = Tab:NewSection("YakumoFarm")
 
 MONS = {}
  
@@ -95,37 +99,68 @@ end)
  
 Section:NewButton("Refresh", "", function()
     table.clear(MONS)
-for i,v in pairs(game:GetService("Workspace").Monster.Mon:GetChildren()) do
+for i,v in pairs(game:GetService("Workspace").YakumoSpawns.Boss:GetChildren()) do
     table.insert(MONS,v.Name)
 end
 end)
 
+local Section = Tab:NewSection("Auto Farm MOB")
+
+MOB = {}
+
+for i,v in pairs(game:GetService("Workspace").HighSpawns.CF13:GetChildren()) do
+	table.insert(MOB,v.Name)
+end
+
+for i,v in pairs(game:GetService("Workspace").HighSpawns.CF15:GetChildren()) do
+	table.insert(MOB,v.Name)
+end
+
+Section:NewDropdown("Please Select Monster", "", MOB, function(currentOption)
+    Select = currentOption
+end)
+
+Section:NewToggle("FarmSlectMOB", "", function(FarmSlectMOB)
+	_G.AutoFarmMOB = FarmSlectMOB
+	while _G.AutoFarmMOB do wait()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").HighSpawns.CF13[Select].HumanoidRootPart.CFrame * CFrame.new(0,0,5)
+wait()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").HighSpawns.CF15[Select].HumanoidRootPart.CFrame * CFrame.new(0,0,5)
+end
+end)
+
 local Section = Tab:NewSection("Auto Farm REP")
-Section:NewToggle("Autofarm", "not off.-./เปิดแล้วปิดไม่ได้นะครับ", function(state)	
-	while wait() do
-			wait(2)
+Section:NewToggle("Autofarm", "not off.-./เปิดแล้วปิดไม่ได้นะครับ", function(AutoFarmRep)	
+	_G.AutoFarmREP = AutoFarmRep
+	while _G.AutoFarmREP do wait()
+			wait(1)
 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(573.6632080078125, 13.220257759094238, 624.46044921875)
-	wait(3)
+	wait(1)
+	game:GetService("ReplicatedStorage").Remotes.Yoshimura.Task:InvokeServer()
+	wait(1)
 	game:GetService("ReplicatedStorage").Remotes.Yoshimura.Task:InvokeServer()
 	wait(3)
-	game:GetService("ReplicatedStorage").Remotes.Yoshimura.Task:InvokeServer()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").LowLevelSpawns.CF11["Low Level Aogiri"].HumanoidRootPart.CFrame * CFrame.new(0,0,5)
 	wait(3)
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(856.606812, -1.76233017, 334.114471, 0.137957454, 0, 0.990438163, 0, 1, 0, -0.990438163, 0, 0.137957454)
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").LowLevelSpawns.CF12["Low Level Aogiri"].HumanoidRootPart.CFrame * CFrame.new(0,0,5)
 	wait(3)
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(934.279907, -1.76232982, 404.099915, 0.137957454, 0, 0.990438163, 0, 1, 0, -0.990438163, 0, 0.137957454)
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").LowLevelSpawns.CF9["Low Level Aogiri"].HumanoidRootPart.CFrame * CFrame.new(0,0,5)
 	wait(3)
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(898.919983, -1.76233017, 185.018448, -0.990438223, 0, 0.137956887, 0, 1, 0, -0.137956887, 0, -0.990438223)
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").LowLevelSpawns.CF14["Low Level Aogiri"].HumanoidRootPart.CFrame * CFrame.new(0,0,5)
 	wait(3)
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(706.713928, -1.76233017, 566.008667, 0.990438223, 0, -0.137956887, 0, 1, 0, 0.137956887, 0, 0.990438223)
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").MidSpawns.CF11["Mid Level Aogiri"].HumanoidRootPart.CFrame * CFrame.new(0,0,5)
 	wait(3)
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(655.414368, -2.16232944, 1041.89111, -0.573598981, -5.36954268e-08, -0.819136262, -6.96061093e-08, 1, -1.68096985e-08, 0.819136262, 4.73748614e-08, -0.573598981)
-	wait(5)
-	
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").MidSpawns.CF12["Mid Level Aogiri"].HumanoidRootPart.CFrame * CFrame.new(0,0,5)
+	wait(3)
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").MidSpawns.CF15["Mid Level Aogiri"].HumanoidRootPart.CFrame * CFrame.new(0,0,5)
+	wait(3)
+
 	end
 end)
 local Section = Tab:NewSection("Auto")
-Section:NewToggle("AutoCashout", "ได้เงินรายชั้วโมงออโต้", function(state)
-    while wait() do
+Section:NewToggle("AutoCashout", "ได้เงินรายชั้วโมงออโต้", function(AutoCashout)
+    _G.AutoCashout = AutoCashout
+	while _G.AutoCashout do wait()
 
 	local args = {
 	    [1] = "Secured1",
@@ -158,7 +193,7 @@ end)
 Section:NewButton("Hightrank Aogiri", "tp to hightrank/วาปไปจุดฟามไฮแรงค์", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(26.9385929107666, -0.9868481755256653, 432.3433837890625)
 end)
-Section:NewButton("Jason boss", "tp to jason/วาปไปหาเจซัน", function()
+Section:NewButton("Jason boss", "tp to Yakumo/วาปไปหายาคุโมะ", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(747.981689453125, -1.1014846563339233, 1370.138671875)
 end)
 Section:NewButton("Kuzen boss", "tp to Kuzen/วาปไปหาคุเซน", function()
@@ -175,7 +210,9 @@ Section:NewKeybind("ToggleUI", "toggleUI/เปิดปิดยูไอ", Enu
 	Library:ToggleUI()
 end)
 local Section = Tab:NewSection("Discord")
-
+Section:NewButton("https://discord.gg/puMgKr8SUH", "discord/ดิสคอสสลีปฮับ", function()
+    copy("https://discord.gg/puMgKr8SUH")
+end)
 
 
 
